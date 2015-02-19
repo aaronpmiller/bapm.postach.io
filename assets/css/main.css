@@ -179,3 +179,32 @@ color: #c8c8c8;
 color: #333;
 background: #333333;
 */
+
+.social-links {
+  margin: 0 0 15px;
+  text-align: center;
+}
+.social-links:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.social-links:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.social-links li {
+  display: inline-block;
+  margin-right: 10px;
+  margin-right: 0.625rem;
+  list-style: none;
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+.social-links li:last-child {
+  margin-right: 0px;
+}
