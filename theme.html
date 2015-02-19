@@ -4,8 +4,6 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
     <head>
-
-		
         <title>
 			{% if is_login %}Login
 			{% elif is_home %}{{ site.author }}
@@ -15,9 +13,7 @@
 			| {{ site.name }}
 		</title>
 		
-		<!-- Start Header Meta -->
 		{{ header_meta }}
-		<!--  End Header Meta -->
 		
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="{{ assets('css/bootstrap.min.css') }}">
