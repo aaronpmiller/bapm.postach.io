@@ -96,18 +96,6 @@ body {
 	background-color: #eee;
 }
 
-/*
-	Font located at http://www.1001fonts.com/pwmanuelfree-font.html#styles
-	Generated alternate formats with Font Squirrel (http://www.fontsquirrel.com) on August 18, 2014
-*/
-@font-face {
-  font-family: 'pwmanuelfreemedium';
-  src: url("../fonts/pwmanuelfree.medium.eot");
-  src: url("../fonts/pwmanuelfree.medium.eot?#iefix") format("embedded-opentype"), url("../fonts/pwmanuelfree.medium.woff") format("woff"), url("../fonts/pwmanuelfree.medium.ttf") format("truetype"), url("../fonts/pwmanuelfree.medium.svg#pwmanuelfreemedium") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .nav-collapsed .nav-logo {
 	width: 50px;
 }
