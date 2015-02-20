@@ -55,7 +55,7 @@
 				</div>
 				<ul class="nav">
 					<li>
-						<a href="#About">
+						<a href="/about">
 							<span class="icon fa-stack">
 								<i class="fa fa-square-o fa-stack-2x"></i>
 								<i class="fa fa-user fa-stack-1x"></i>
@@ -63,14 +63,14 @@
 							<span>About</span>
 						</a>
 					</li>
-					<li class="active">
-						<a href="#Blog">
+					<li {% if not post.type == 'page' %}class="active"{% endif %}>
+						<a href="/">
 							<i class="icon fa fa-rss-square fa-2x"></i>
 							<span>Blog</span>
 						</a>
 					</li>
-					<li>
-						<a href="#Contact">
+					<li  >
+						<a href="/contact">
 							<i class="icon fa fa-envelope fa-2x"></i>
 							<span>Contact</span>
 						</a>
@@ -87,11 +87,9 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="fourteen columns offset-by-two">
-								test
-								{% if not post.type == 'page' %}
-								active
-								{% endif %}
-								end test
+								
+								{% if not post.type == 'page' %}class="active"{% endif %}
+								
 								{% if pages %}
 								<nav class="site-nav">
 									<ul class="nav-menu">
