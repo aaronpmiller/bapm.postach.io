@@ -87,9 +87,7 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="fourteen columns offset-by-two">
-								{% if not post.type == 'page' %}
-								active
-								{% endif %}
+
 								<a href="{{ site.base_url }}" class="{{ set_active() }}">Blog</a>
 								{% if pages %}
 								<nav class="site-nav">
