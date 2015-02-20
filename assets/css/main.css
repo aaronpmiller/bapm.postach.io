@@ -144,7 +144,7 @@ body {
 
 .main-content {
 	min-height: 100%;
-	margin-bottom: -86px;
+	margin-bottom: -125px;
 }
 
 .main-content:after {
@@ -153,7 +153,7 @@ body {
 }
 
 .footer, .main-content:after {
-	height: 85px;
+	height: 125px;
 }
 
 .footer {
