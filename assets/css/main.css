@@ -183,6 +183,7 @@ background: #333333;
 .social-links {
   margin: 0 0 15px;
   text-align: center;
+  padding-left: 0;
 }
 .social-links:after {
   visibility: hidden;
