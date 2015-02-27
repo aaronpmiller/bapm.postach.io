@@ -332,19 +332,21 @@
 			$(".side-nav").hover(
 				function(){
 					//$(".logo-text").toggleClass('hidden');
+					$(".logo-text").toggleClass('shown');
 					setTimeout(function() {
 						$("body").removeClass('nav-collapsed');
 						setTimeout(function() {
-							//$(".logo-text").toggleClass('shown');
+							$(".logo-text").toggleClass('shown');
 							document.getElementById("logo-text").innerHTML = "Aaron P. Miller";
 						}, 5);
 					}, 5);
 				},
 				function(){
 					//$(".logo-text").toggleClass('hidden');
+					$(".logo-text").toggleClass('shown');
 					$("body").addClass('nav-collapsed');
 					setTimeout(function() {
-						//$(".logo-text").toggleClass('shown');
+						$(".logo-text").toggleClass('shown');
 						document.getElementById("logo-text").innerHTML = "APM";
 					}, 5);
 				}
