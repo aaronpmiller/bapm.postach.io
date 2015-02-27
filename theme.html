@@ -52,7 +52,6 @@
 			<nav class="side-nav">
 				<div class="nav-logo">
 					<span id="logo-text" class="logo-text shown">APM</span>
-					<span class="logo-text hidden">{{ site.author }}</span>
 				</div>
 				<ul class="nav">
 					<li class="{{ set_active('/about') }}">
@@ -340,7 +339,7 @@
 							setTimeout(function() {
 								$(".logo-text").toggleClass('shown');
 							}, 5);
-						}, 380);
+						}, 280);
 					}, 5);
 				},
 				function(){
@@ -352,7 +351,7 @@
 						setTimeout(function() {
 							$(".logo-text").toggleClass('shown');
 						}, 5);
-					}, 380);
+					}, 280);
 				}
 			);
 		</script>
