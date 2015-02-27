@@ -51,7 +51,7 @@
 			<![endif]-->
 			<nav class="side-nav">
 				<div class="nav-logo">
-					<span class="logo-text shown">APM</span>
+					<span id="logo-text" class="logo-text shown">APM</span>
 					<span class="logo-text hidden">{{ site.author }}</span>
 				</div>
 				<ul class="nav">
@@ -309,6 +309,7 @@
 		
 
 		<script>
+			/*
 			$(".side-nav").hover(
 				function(){
 					$(".logo-text").toggleClass('hidden');
@@ -324,6 +325,27 @@
 					$("body").addClass('nav-collapsed');
 					setTimeout(function() {
 						$(".logo-text").toggleClass('shown');
+					}, 5);
+				}
+			);
+			*/
+			$(".side-nav").hover(
+				function(){
+					//$(".logo-text").toggleClass('hidden');
+					setTimeout(function() {
+						$("body").removeClass('nav-collapsed');
+						setTimeout(function() {
+							//$(".logo-text").toggleClass('shown');
+							document.getElementById(logo-text).innerHTML = 'Aaron P. Miller';
+						}, 5);
+					}, 5);
+				},
+				function(){
+					//$(".logo-text").toggleClass('hidden');
+					$("body").addClass('nav-collapsed');
+					setTimeout(function() {
+						//$(".logo-text").toggleClass('shown');
+						document.getElementById(logo-text).innerHTML = 'APM';
 					}, 5);
 				}
 			);
