@@ -101,24 +101,25 @@
 												<h2 class="post-title">
 													<a href="{{ post.permalink }}">{{ post.title }}</a>
 												</h2>
-												<div class="post-metadata">
-													<div class="left">
-														<p class="post-byline">Posted by {{ site.author }} on <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
-													</div>
-													<div class="right">
-														{% if post.tags %}
-														<div class="post-tags">
-															Filed under: {{ post.tags|format_tags(humanize=True) }}
-														</div>
-														{% endif %}
-													</div>
-												</div>
+
 											</header>
 											<div class="post-body">
 												<div class="post-content" data-type-cleanup="true">
 													{{ post.content }}
 													{% if post.type == 'link' or post.type == 'webclip' %}
 													<span class="post-link-url"><i class="icon-share"></i> <a href="{{ post.url }}" target="_blank">{{ post.url }}</a></span>
+													{% endif %}
+												</div>
+											</div>
+											<div class="post-metadata">
+												<div class="left">
+													<p class="post-byline">Posted by {{ site.author }} on <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
+												</div>
+												<div class="right">
+													{% if post.tags %}
+													<div class="post-tags">
+														Filed under: {{ post.tags }}
+													</div>
 													{% endif %}
 												</div>
 											</div>
@@ -151,7 +152,7 @@
 													<p class="post-byline left">Posted by {{ site.author }} on <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
 													{% if post.tags %}
 													<div class="post-tags right">
-														Filed under: {{ post.tags|format_tags(humanize=True) }}
+														Filed under: {{ post.tags }}
 													</div>
 													{% endif %}
 												</div>
