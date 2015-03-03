@@ -108,7 +108,7 @@
 													<div class="right">
 														{% if post.tags %}
 														<div class="post-tags">
-															Filed under: {{ post.tags|format_tags(humanize=True) }}
+															Filed under: {{ post.tags|format_tags(humanize=False) }}
 														</div>
 														{% endif %}
 													</div>
@@ -152,7 +152,7 @@
 													<p class="post-byline left">Posted by {{ site.author }} on <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
 													{% if post.tags %}
 													<div class="post-tags right">
-														Filed under: {{ post.tags|format_tags(humanize=True) }}
+														Filed under: {{ post.tags|format_tags(humanize=False) }}
 													</div>
 													{% endif %}
 												</div>
