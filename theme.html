@@ -297,6 +297,10 @@
 		<!-- Start footer_meta -->
 		{{ footer_meta }}
 		<!--  End footer_meta -->
+
+		{% if post.type == 'page' %}
+		<iframe name="hidden_iframe" id="hidden_iframe" class="hidden" style="display:none;" onload="if(submitted){window.parent.location='http://aaronpmiller.com/thank-you';}"></iframe>
+		{% endif %}
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -352,6 +356,8 @@
 					}, 280);
 				}
 			);
+			// Contact Form
+			var submitted=false;
 		</script>
     </body>
 </html>
