@@ -299,7 +299,7 @@
 		<!--  End footer_meta -->
 
 		{% if post.type == 'page' %}
-		<iframe name="hidden_iframe" id="hidden_iframe" class="hidden" style="display:none;" onload="(function(){if(submitted){window.parent.location='http://aaronpmiller.com/thank-you';}};)"></iframe>
+		<iframe name="hidden_iframe" id="hidden_iframe" data-cfasync="false" class="hidden" style="display:none;" onload="(function(){if(submitted){window.parent.location='http://aaronpmiller.com/thank-you';}};)"></iframe>
 		{% endif %}
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
