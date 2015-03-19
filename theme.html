@@ -299,6 +299,10 @@
 		<!--  End footer_meta -->
 
 		{% if post.type == 'page' %}
+		<script>
+			// Contact Form
+			var submitted=false;
+		</script>
 		<iframe name="hidden_iframe" id="hidden_iframe" class="hidden" style="display:none;" data-cfasync="false" onload="if(submitted){window.location='http://aaronpmiller.com/thank-you';}"></iframe>
 		{% endif %}
 		
@@ -307,7 +311,6 @@
 		
         <script src="{{ assets('js/plugins.js') }}"></script>
         <script src="{{ assets('js/main.js') }}"></script>
-		
 
 		<script>
 			/*
@@ -356,8 +359,6 @@
 					}, 280);
 				}
 			);
-			// Contact Form
-			var submitted=false;
 		</script>
     </body>
 </html>
