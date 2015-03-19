@@ -95,30 +95,33 @@
 
 									{% if posts %}
 									<section itemscope itemtype="http://schema.org/Blog" class="blog-feed">
+									<div class="row">
 									{% for post in posts %}
+										<!--  New Card -->
+										<div class="col-md-3">
 										<article itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting" class="blog-post feed-item">
 											<header class="post-header">
 												<h2 class="post-title">
 													<a href="{{ post.permalink }}">{{ post.title }}</a>
 												</h2>
 												<div class="post-metadata text-muted">
-														<p class="post-byline">
-															Author: {{ site.author }} &nbsp; <i class="fa fa-clock-o fa-1"></i> 
-															<time datetime="{{ post.created_at }}" class="post-date">
-																{{ post.created_at|date_format }}
-															</time>
+													<p class="post-byline">
+														Author: {{ site.author }} &nbsp; <i class="fa fa-clock-o fa-1"></i> 
+														<time datetime="{{ post.created_at }}" class="post-date">
+															{{ post.created_at|date_format }}
+														</time>
+														&nbsp;
+														{% if site.disqus %}
+														<i class="fa fa-comment-o fa-1"></i>
+														<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}">
+															# Comments
+														</a>
+														{% endif %}
+														{% if post.tags %}
 															&nbsp;
-															{% if site.disqus %}
-															<i class="fa fa-comment-o fa-1"></i>
-															<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}">
-																# Comments
-															</a>
-															{% endif %}
-															{% if post.tags %}
-																&nbsp;
-																Tags: {{ post.tags|format_tags(humanize=False) }}
-															{% endif %}
-														</p>
+															Tags: {{ post.tags|format_tags(humanize=False) }}
+														{% endif %}
+													</p>
 												</div>
 											</header>
 											<div class="post-body">
@@ -133,7 +136,10 @@
 											</div>
 
 										</article>
+										</div>
+										<!--  End Card -->
 									{% endfor %}
+									</div>
 									</section>
 									{% else %}
 									<div class="blog-feed">

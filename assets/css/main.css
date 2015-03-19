@@ -146,13 +146,13 @@ nav span {
 	-o-transition: opacity 0.28s ease-in-out 0.1s;
 	transition: opacity 0.28s ease-in-out 0.1s;
 }
-
+/*
 .content {
 	margin: 0 auto;
 	padding: 50px 60px 20px;
 	max-width: 1080px;
 }
-
+*/
 .main-content {
 	min-height: 100%;
 	margin-bottom: -125px;
