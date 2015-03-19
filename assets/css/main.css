@@ -45,13 +45,18 @@ body {
 	user-select: none;
 	-webkit-font-smoothing: subpixel-antialiased;
 }
-
+/*
 .side-nav {
 	-webkit-box-shadow: inset -4px 0px 12px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: inset -4px 0px 12px 0px rgba(0,0,0,0.75);
 	box-shadow: inset -4px 0px 12px 0px rgba(0,0,0,0.75);
 }
+*/
 
+nav span {
+	font-weight: bold;
+	text-transform: uppercase;
+}
 .content {
 	display: block;
 	-ms-transform: translate(150px, 0);
