@@ -104,7 +104,7 @@ nav span {
 
 .active a {
 	color: #FF8300;
-	background-color: #eee;
+	/*background-color: #eee;*/
 }
 
 .nav-collapsed .nav-logo {
