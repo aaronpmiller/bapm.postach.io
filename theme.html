@@ -299,7 +299,7 @@
 		<!--  End footer_meta -->
 
 		{% if post.type == 'page' %}
-		<iframe name="hidden_iframe" id="hidden_iframe" class="hidden" style="display:none;"></iframe>
+		<iframe name="hidden_iframe" id="hidden_iframe" class="hidden" style="display:none;" onload="(function(){if(submitted){window.parent.location='http://aaronpmiller.com/thank-you';}};)"></iframe>
 		{% endif %}
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -358,7 +358,6 @@
 			);
 			// Contact Form
 			var submitted=false;
-			document.getElementById("hidden_iframe").addEventListener("load", if(submitted){window.parent.location='http://aaronpmiller.com/thank-you';});
 		</script>
     </body>
 </html>
