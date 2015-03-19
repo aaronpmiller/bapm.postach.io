@@ -102,7 +102,6 @@
 													<a href="{{ post.permalink }}#disqus_thread">{{ post.title }}</a>
 												</h2>
 												<div class="post-metadata muted">
-													<div class="left">
 														<p class="post-byline">
 															Author: {{ site.author }} &nbsp; <i class="fa fa-clock-o fa-1"></i> 
 															<time datetime="{{ post.created_at }}" class="post-date">
@@ -115,19 +114,12 @@
 																# Comments
 															</a>
 															{% endif %}
+															{% if post.tags %}
+																Tags: {{ post.tags|format_tags(humanize=False) }}
+															{% endif %}
 														</p>
-													</div>
-													<div class="right">
-														{% if post.tags %}
-														<div class="post-tags">
-															Tags: {{ post.tags|format_tags(humanize=False) }}
-														</div>
-														{% endif %}
-														
-													</div>
 												</div>
 											</header>
-											<br>
 											<div class="post-body">
 												<div class="post-content" data-type-cleanup="true">
 													<p>
