@@ -86,7 +86,12 @@ nav span {
 
 .side-nav li a {
 	padding-left: 11px;
-	border-top: 1px #2d2d2d solid;
+	/*border-top: 1px #2d2d2d solid;*/
+}
+
+.side-nav li a:hover {
+	color: #FF8300;
+	background: #333;
 }
 
 .icon {
