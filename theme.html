@@ -103,7 +103,18 @@
 												</h2>
 												<div class="post-metadata muted">
 													<div class="left">
-														<p class="post-byline">Author: {{ site.author }}, Posted: <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
+														<p class="post-byline">
+															Author: {{ site.author }}, Posted: 
+															<time datetime="{{ post.created_at }}" class="post-date">
+																{{ post.created_at|date_format }}
+															</time>
+															&nbsp;
+															{% if site.disqus %}
+															<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}">
+																# Comments
+															</a>
+															{% endif %}
+														</p>
 													</div>
 													<div class="right">
 														{% if post.tags %}
@@ -111,11 +122,7 @@
 															Tags: {{ post.tags|format_tags(humanize=False) }}
 														</div>
 														{% endif %}
-														{% if site.disqus %}
-														<div class="disqus-comment-count" data-disqus-identifier="{{ post.permalink }}">
-															Comments: 
-														</div>
-														{% endif %}
+														
 													</div>
 												</div>
 											</header>
