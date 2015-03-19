@@ -103,12 +103,13 @@
 												</h2>
 												<div class="post-metadata muted">
 													<div class="left">
-														<p class="post-byline">Posted by {{ site.author }} on <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
+														<p class="post-byline">Author: {{ site.author }} Posted: <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
 													</div>
 													<div class="right">
 														{% if post.tags %}
 														<div class="post-tags">
-															Filed under: {{ post.tags|format_tags(humanize=False) }}
+															Tags: {{ post.tags|format_tags(humanize=False) }}
+															<br/>
 														</div>
 														{% endif %}
 													</div>
