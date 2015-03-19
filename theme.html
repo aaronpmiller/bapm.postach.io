@@ -99,22 +99,28 @@
 										<article itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting" class="blog-post feed-item">
 											<header class="post-header">
 												<h2 class="post-title">
-													<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.title }}">{{ post.title }}</a>
+													<a href="{{ post.permalink }}#disqus_thread">{{ post.title }}</a>
 												</h2>
 												<div class="post-metadata muted">
 													<div class="left">
-														<p class="post-byline">Author: {{ site.author }} Posted: <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
+														<p class="post-byline">Author: {{ site.author }}, Posted: <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
 													</div>
 													<div class="right">
 														{% if post.tags %}
 														<div class="post-tags">
 															Tags: {{ post.tags|format_tags(humanize=False) }}
-															<br/>
+														</div>
+														{% endif %}
+														{% if site.disqus %}
+														<div class="disqus-comment-count" data-disqus-identifier="{{ post.permalink }}">
+															Comments: 
 														</div>
 														{% endif %}
 													</div>
 												</div>
 											</header>
+											<br>
+											<br>
 											<div class="post-body">
 												<div class="post-content" data-type-cleanup="true">
 													{{ post.content }}
@@ -166,10 +172,10 @@
 													<h1 class="post-title">{{ post.title }}</h1>
 												</div>
 												<div class="post-metadata muted">
-													<p class="post-byline left">Posted by {{ site.author }} on <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
+													<p class="post-byline left">Author: {{ site.author }}, Posted: <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
 													{% if post.tags %}
 													<div class="post-tags right">
-														Filed under: {{ post.tags|format_tags(humanize=False) }}
+														Tags: {{ post.tags|format_tags(humanize=False) }}
 													</div>
 													{% endif %}
 												</div>
@@ -187,7 +193,7 @@
 											<div id="disqus_thread"></div>
 											<script type="text/javascript">
 											var disqus_shortname = '{{ site.disqus }}';
-											var disqus_identifier = '{{ post.title }}';
+											var disqus_identifier = '{{ post.permalink }}';
 											var disqus_title = '{{ post.title }}';
 											(function() {
 												var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
