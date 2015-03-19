@@ -104,12 +104,13 @@
 												<div class="post-metadata muted">
 													<div class="left">
 														<p class="post-byline">
-															Author: {{ site.author }}, Posted: 
+															Author: {{ site.author }} &nbsp; <i class="fa fa-clock-o fa-1"></i> 
 															<time datetime="{{ post.created_at }}" class="post-date">
 																{{ post.created_at|date_format }}
 															</time>
 															&nbsp;
 															{% if site.disqus %}
+															<i class="fa fa-comment fa-1"></i>
 															<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}">
 																# Comments
 															</a>
@@ -127,13 +128,14 @@
 												</div>
 											</header>
 											<br>
-											<br>
 											<div class="post-body">
 												<div class="post-content" data-type-cleanup="true">
+													<p>
 													{{ post.content }}
 													{% if post.type == 'link' or post.type == 'webclip' %}
 													<span class="post-link-url"><i class="icon-share"></i> <a href="{{ post.url }}" target="_blank">{{ post.url }}</a></span>
 													{% endif %}
+													</p>
 												</div>
 											</div>
 
