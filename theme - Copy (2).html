@@ -1,0 +1,397 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+		<meta charset="utf-8">
+        <title>
+			{% if is_login %}Login
+			{% elif is_home %}Blog
+			{% elif is_tag %}{{ tag }}
+			{% elif post %}{{ post.title }}
+			{% endif %}
+			| {{ site.name }}
+		</title>
+		
+		<!-- Start header_meta -->
+		{{ header_meta }}
+		<!-- End header_meta -->
+		
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="{{ assets('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ assets('css/bootstrap-theme.min.css') }}">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Rock+Salt|Open+Sans' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ assets('css/main.css') }}">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+		
+		<!-- Start Site Analytics -->
+		{% if site.analytics %}
+		<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', '{{ site.analytics }}']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		</script>
+		{% endif %}
+		<!--  End Site Analytics -->
+		
+    </head>
+    <body class="nav-collapsed">
+		<div class="view">
+			<!--[if lt IE 8]>
+				<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+			<![endif]-->
+			<nav class="side-nav">
+				<div class="nav-logo">
+					<span id="logo-text" class="logo-text shown">APM</span>
+				</div>
+				<ul class="nav">
+					<li class="{{ set_active('/about') }}">
+						<a href="/about">
+							<span class="icon fa-stack">
+								<i class="fa fa-square-o fa-stack-2x"></i>
+								<i class="fa fa-user fa-stack-1x"></i>
+							</span>
+							<span>About</span>
+						</a>
+					</li>
+					<li {% if not post.type == 'page' %}class="active"{% endif %}>
+						<a href="/">
+							<i class="icon fa fa-rss-square fa-2x"></i>
+							<span>Blog</span>
+						</a>
+					</li>
+					<li class="{{ set_active('/contact') }}">
+						<a href="/contact">
+							<i class="icon fa fa-envelope fa-2x"></i>
+							<span>Contact</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="content">
+				<div class="main-content">
+					<!-- Start Site Logic -->
+					
+					{% if is_login %}
+						{{ login_form }}
+					{% else %}
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="site-content">
+								{% if is_home or is_tag %}
+									{% if is_tag %}
+									<h2 class="tag-header">Showing all posts tagged {{ tag }}:</h2>
+									{% endif %}
+
+									{% if posts %}
+									<section itemscope itemtype="http://schema.org/Blog" class="blog-feed">
+									<div class="row">
+									{% for post in posts %}
+										<!--  New Card -->
+										<div class="col-md-3">
+										<article itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting" class="blog-post feed-item">
+											<header class="post-header">
+												<h2 class="post-title">
+													<a href="{{ post.permalink }}">{{ post.title }}</a>
+												</h2>
+												<div class="post-metadata text-muted">
+													<p class="post-byline">
+														Author: {{ site.author }} &nbsp; <i class="fa fa-clock-o fa-1"></i> 
+														<time datetime="{{ post.created_at }}" class="post-date">
+															{{ post.created_at|date_format }}
+														</time>
+														&nbsp;
+														{% if site.disqus %}
+														<i class="fa fa-comment-o fa-1"></i>
+														<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}">
+															# Comments
+														</a>
+														{% endif %}
+														{% if post.tags %}
+															&nbsp;
+															Tags: {{ post.tags|format_tags(humanize=False) }}
+														{% endif %}
+													</p>
+												</div>
+											</header>
+											<div class="post-body">
+												<div class="post-content" data-type-cleanup="true">
+													<p>
+													{{ post.content }}
+													{% if post.type == 'link' or post.type == 'webclip' %}
+													<span class="post-link-url"><i class="icon-share"></i> <a href="{{ post.url }}" target="_blank">{{ post.url }}</a></span>
+													{% endif %}
+													</p>
+												</div>
+											</div>
+
+										</article>
+										</div>
+										<!--  End Card -->
+									{% endfor %}
+									</div>
+									</section>
+									{% else %}
+									<div class="blog-feed">
+										<h2 class="title"><em>No posts yet :(</em></h2>
+									</div>
+									{% endif %}
+									{% if not is_tag and posts %}
+									{% if pagination.next or pagination.prev %}
+									<div class="blog-pagination">
+										{% if pagination.prev %}<a href="{{ pagination.prev }}" title="Newer Posts" class="pagination-newer">&larr; Newer Posts</a>{% endif %}
+										{% if pagination.next %}<a href="{{ pagination.next }}" title="Previous Posts" class="pagination-older">Previous Posts &rarr;</a>{% endif %}
+									</div>
+									{% endif %}
+									{% endif %}
+									
+									<!-- Disqus-->
+									
+									{% if site.disqus %}
+									<script type="text/javascript">
+									var disqus_shortname = '{{ site.disqus }}';
+									(function() {
+										var s = document.createElement('script'); s.async = true;
+										s.type = 'text/javascript';
+										s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+										(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+									})();
+									</script>
+									{% endif %}
+									
+									<!-- End Disqus -->
+
+								{% elif post.type == 'post' %}
+
+									<article itemscope itemtype="http://schema.org/BlogPosting" class="blog-post post-single">
+										<section class="post-body">
+											<header class="post-header">
+												<div class="header-top">
+													<h1 class="post-title">{{ post.title }}</h1>
+												</div>
+												<div class="post-metadata muted">
+													<p class="post-byline left">Author: {{ site.author }}, Posted: <time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></p>
+													{% if post.tags %}
+													<div class="post-tags right">
+														Tags: {{ post.tags|format_tags(humanize=False) }}
+													</div>
+													{% endif %}
+												</div>
+											</header>
+											<div class="post-content" data-type-cleanup="true">
+											  {{ post.content }}
+											</div>
+											<div class="post-socialbar">
+											  {{ theme.social.bar }}
+											</div>
+										</section>
+										{% if site.disqus %}
+										<section class="comments">
+											<hr class="large" />
+											<div id="disqus_thread"></div>
+											<script type="text/javascript">
+											var disqus_shortname = '{{ site.disqus }}';
+											var disqus_identifier = '{{ post.permalink }}';
+											var disqus_title = '{{ post.title }}';
+											(function() {
+												var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+												dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+												(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+											})();
+											</script>
+											<noscript>
+												Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+											</noscript>
+											<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+										</section>
+										{% endif %}
+									</article>
+
+								{% elif post.type == 'link' %}
+
+									<article itemscope itemtype="http://schema.org/BlogPosting" class="blog-post post-single">
+										<section class="post-body">
+											<header class="post-header">
+												<div class="header-top">
+													<h1 class="post-title">{{ link.title }}</h1>
+												</div>
+												<div class="post-metadata">
+													<p class="post-byline left">Posted by {{ site.author }} on <time datetime="{{ link.created_at }}" class="post-date">{{ link.created_at|date_format }}</time></p>
+													{% if link.tags %}
+													<div class="post-tags right">
+														Filed under: {{ link.tags|format_tags(humanize=True) }}
+													</div>
+													{% endif %}
+												</div>
+											</header>
+											<div class="post-content" data-type-cleanup="true">
+												{{ link.content }}
+												<p><i class="icon-share"></i> <a href="{{ link.url }}">{{ link.url }}</a></p>
+											</div>
+											<div class="post-socialbar">
+											  {{ theme.social.bar }}
+											</div>
+										</section>
+										{% if site.disqus %}
+										<section class="comments">
+											<hr class="large" />
+											<div id="disqus_thread"></div>
+											<script type="text/javascript">
+											var disqus_shortname = '{{ site.disqus }}';
+											var disqus_identifier = '{{ link.title }}';
+											var disqus_title = '{{ link.title }}';
+											(function() {
+												var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+												dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+												(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+											})();
+											</script>
+											<noscript>
+												Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+											</noscript>
+											<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+										</section>
+										{% endif %}
+									</article>
+
+								{% elif post.type == 'page' %}
+								<div class="blog-page">
+									<h1 class="page-title">{{ page.title }}</h1>
+									<div class="page-content">
+										{{ page.content }}
+									</div>
+								</div>
+								{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{% endif %}
+					
+					<!-- End Site Logic -->
+				</div>
+				<footer class="footer">
+					<hr>
+					<!--p class="text-muted">Footer Contents</p-->
+					<div class="site-footer">
+						<ul class="social-links">
+							{% if site.twitter %}
+							<li>
+								<a href="{{ site.twitter }}" title="Twitter" target="_blank">
+									<i class="icon-twitter"></i>
+								</a>
+							</li>
+							{% endif %}
+							{% if site.facebook %}
+							<li>
+								<a href="{{ site.facebook }}" title="Facebook" target="_blank">
+									<i class="icon-facebook"></i>
+								</a>
+							</li>
+							{% endif %}
+							{% if site.googleplus %}
+							<li>
+								<a href="{{ site.googleplus }}?rel=author" title="Google+" target="_blank">
+									<i class="icon-google-plus"></i>
+								</a>
+							</li>
+							{% endif %}
+							{% if site.linkedin %}
+							<li>
+								<a href="{{ site.linkedin }}" title="LinkedIn" target="_blank">
+									<i class="icon-linkedin"></i>
+								</a>
+							</li>
+							{% endif %}
+							<li>
+								<a href="{{ site.atom_url }}" title="RSS" target="_blank">
+									<!--i class="icon-rss"></i-->
+									<i class="fa fa-rss-square"></i>
+								</a>
+							</li>
+						</ul>
+						<p class="text-muted">All rights Reserved &copy; <a href="/">{{ site.name }}</a>. Powered by <a href="http://postach.io/">Postach.io</a></p>
+					</div>
+				</footer>
+			</div>
+		</div>
+		
+		<!-- Start footer_meta -->
+		{{ footer_meta }}
+		<!--  End footer_meta -->
+
+		{% if post.type == 'page' %}
+		<script>
+			// Contact Form
+			var submitted=false;
+		</script>
+		<iframe name="hidden_iframe" id="hidden_iframe" class="hidden" style="display:none;" data-cfasync="false" onload="if(submitted){window.location='http://aaronpmiller.com/thank-you';}"></iframe>
+		{% endif %}
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		
+        <script src="{{ assets('js/plugins.js') }}"></script>
+        <script src="{{ assets('js/main.js') }}"></script>
+
+		<script>
+			/*
+			$(".side-nav").hover(
+				function(){
+					$(".logo-text").toggleClass('hidden');
+					setTimeout(function() {
+						$("body").removeClass('nav-collapsed');
+						setTimeout(function() {
+							$(".logo-text").toggleClass('shown');
+						}, 5);
+					}, 5);
+				},
+				function(){
+					$(".logo-text").toggleClass('hidden');
+					$("body").addClass('nav-collapsed');
+					setTimeout(function() {
+						$(".logo-text").toggleClass('shown');
+					}, 5);
+				}
+			);
+			*/
+			$(".side-nav").hover(
+				function(){
+					//$(".logo-text").toggleClass('hidden');
+					$(".logo-text").toggleClass('shown');
+					setTimeout(function() {
+						$("body").removeClass('nav-collapsed');
+						setTimeout(function() {
+							document.getElementById("logo-text").innerHTML = "Aaron P. Miller";
+							setTimeout(function() {
+								$(".logo-text").toggleClass('shown');
+							}, 5);
+						}, 280);
+					}, 5);
+				},
+				function(){
+					//$(".logo-text").toggleClass('hidden');
+					$(".logo-text").toggleClass('shown');
+					$("body").addClass('nav-collapsed');
+					setTimeout(function() {
+						document.getElementById("logo-text").innerHTML = "APM";
+						setTimeout(function() {
+							$(".logo-text").toggleClass('shown');
+						}, 5);
+					}, 280);
+				}
+			);
+		</script>
+    </body>
+</html>
