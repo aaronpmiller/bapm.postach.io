@@ -118,8 +118,8 @@
 														</a>
 														{% endif %}
 														{% if post.tags %}
-															&nbsp;
-															Tags: {{ post.tags|format_tags(humanize=False) }}
+															&nbsp; <i class="fa fa-tags fa-1"></i>
+															{{ post.tags|format_tags(humanize=False) }}
 														{% endif %}
 													</p>
 												</div>
