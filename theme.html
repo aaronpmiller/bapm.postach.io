@@ -106,20 +106,15 @@
 												</h2>
 												<div class="post-metadata text-muted">
 													<p class="post-byline">
-														Author: {{ site.author }} &nbsp; <i class="fa fa-clock-o fa-1"></i> 
-														<time datetime="{{ post.created_at }}" class="post-date">
-															{{ post.created_at|date_format }}
-														</time>
-														&nbsp;
+														<!--Author: {{ site.author }}&nbsp;-->
+														<i class="fa fa-clock-o fa-1"></i> 
+														<time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time>
 														{% if site.disqus %}
-														<i class="fa fa-comment-o fa-1"></i>
-														<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}">
-															# Comments
-														</a>
+														&nbsp;<i class="fa fa-comment-o fa-1"></i>
+														<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}"></a>
 														{% endif %}
 														{% if post.tags %}
-															&nbsp; <i class="fa fa-tags fa-1"></i>
-															{{ post.tags|format_tags(humanize=False) }}
+														&nbsp; <i class="fa fa-tags fa-1"></i>{{ post.tags|format_tags(humanize=False) }}
 														{% endif %}
 													</p>
 												</div>
