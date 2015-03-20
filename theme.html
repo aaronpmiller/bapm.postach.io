@@ -120,9 +120,9 @@
 												<div class="post-metadata text-muted">
 													<p class="post-byline">
 														<!--Author: {{ site.author }}&nbsp;-->
-														<span class="nobreak"><i class="fa fa-clock-o fa-1"></i><time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></span>
+														<span class="nobreak"><i class="fa fa-clock-o fa-1"></i>&nbsp;<time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></span>
 														{% if site.disqus %}
-														&nbsp;<span class="nobreak"><i class="fa fa-comment-o fa-1"></i><a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}"># Comments</a></span>
+														&nbsp;<span class="nobreak"><i class="fa fa-comment-o fa-1"></i>&nbsp;<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}"># Comments</a></span>
 														{% endif %}
 														{% if post.tags %}&nbsp;<span class="nobreak"><i class="fa fa-tags fa-1"></i>&nbsp;{{ post.tags|format_tags(humanize=False) }}</span>
 														{% endif %}
@@ -182,9 +182,9 @@
 												<div class="post-metadata text-muted">
 													<p class="post-byline">
 														<!--Author: {{ site.author }}&nbsp;-->
-														<span class="nobreak"><i class="fa fa-clock-o fa-1"></i><time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></span>
+														<span class="nobreak"><i class="fa fa-clock-o fa-1"></i>&nbsp;<time datetime="{{ post.created_at }}" class="post-date">{{ post.created_at|date_format }}</time></span>
 														{% if site.disqus %}
-														&nbsp;<span class="nobreak"><i class="fa fa-comment-o fa-1"></i><a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}"># Comments</a></span>
+														&nbsp;<span class="nobreak"><i class="fa fa-comment-o fa-1"></i>&nbsp;<a href="{{ post.permalink }}#disqus_thread" data-disqus-identifier="{{ post.permalink }}"># Comments</a></span>
 														{% endif %}
 														{% if post.tags %}&nbsp;<span class="nobreak"><i class="fa fa-tags fa-1"></i>&nbsp;{{ post.tags|format_tags(humanize=False) }}</span>
 														{% endif %}
@@ -240,9 +240,9 @@
 												<div class="post-metadata text-muted">
 													<p class="post-byline">
 														<!--Author: {{ site.author }}&nbsp;-->
-														<span class="nobreak"><i class="fa fa-clock-o fa-1"></i><time datetime="{{ link.created_at }}" class="post-date">{{ link.created_at|date_format }}</time></span>
+														<span class="nobreak"><i class="fa fa-clock-o fa-1"></i>&nbsp;<time datetime="{{ link.created_at }}" class="post-date">{{ link.created_at|date_format }}</time></span>
 														{% if site.disqus %}
-														&nbsp;<span class="nobreak"><i class="fa fa-comment-o fa-1"></i><a href="{{ link.url }}#disqus_thread" data-disqus-identifier="{{ link.url }}"># Comments</a></span>
+														&nbsp;<span class="nobreak"><i class="fa fa-comment-o fa-1"></i>&nbsp;<a href="{{ link.url }}#disqus_thread" data-disqus-identifier="{{ link.url }}"># Comments</a></span>
 														{% endif %}
 														{% if link.tags %}
 														&nbsp;<span class="nobreak"><i class="fa fa-tags fa-1"></i>&nbsp;{{ link.tags|format_tags(humanize=False) }}</span>
