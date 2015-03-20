@@ -45,6 +45,19 @@
 		
     </head>
     <body class="nav-collapsed">
+	
+		{% if site.disqus %}
+		<script type="text/javascript">
+		var disqus_shortname = '{{ site.disqus }}';
+		(function() {
+			var s = document.createElement('script'); s.async = true;
+			s.type = 'text/javascript';
+			s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+		})();
+		</script>
+		{% endif %}
+	
 		<div class="view">
 			<!--[if lt IE 8]>
 				<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -149,22 +162,6 @@
 									</div>
 									{% endif %}
 									{% endif %}
-									
-									<!-- Disqus-->
-									
-									{% if site.disqus %}
-									<script type="text/javascript">
-									var disqus_shortname = '{{ site.disqus }}';
-									(function() {
-										var s = document.createElement('script'); s.async = true;
-										s.type = 'text/javascript';
-										s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-										(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-									})();
-									</script>
-									{% endif %}
-									
-									<!-- End Disqus -->
 
 								{% elif post.type == 'post' %}
 
@@ -212,7 +209,7 @@
 											<hr class="large" />
 											<div id="disqus_thread"></div>
 											<script type="text/javascript">
-											var disqus_shortname = '{{ site.disqus }}';
+											//var disqus_shortname = '{{ site.disqus }}';
 											var disqus_identifier = '{{ post.permalink }}';
 											var disqus_title = '{{ post.title }}';
 											(function() {
@@ -275,7 +272,7 @@
 											<hr class="large" />
 											<div id="disqus_thread"></div>
 											<script type="text/javascript">
-											var disqus_shortname = '{{ site.disqus }}';
+											//var disqus_shortname = '{{ site.disqus }}';
 											var disqus_identifier = '{{ link.url }}';
 											var disqus_title = '{{ link.title }}';
 											(function() {
