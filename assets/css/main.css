@@ -188,3 +188,7 @@ article, .blog-page {
 .post-byline {
 	font-size:.85em;
 }
+
+.nobreak {
+	white-space: nowrap;
+}
