@@ -14,7 +14,6 @@ body {
 
 .view {
 	overflow-x: hidden;
-	/*background-color: #f8f9f9;*/
 }
 
 .side-nav {
@@ -22,27 +21,11 @@ body {
 	left: 0;
 	top: 0;
 	height: 100%;
-	/*width: 200px;*/
 	overflow: hidden;
 	cursor: default;
 	color: #c8c8c8;
-	/*background: #333;*/
 	overflow-x: hidden;
 	overflow-y: auto;
-	
-	/*
-	-moz-transition: width ease-in-out 0.28s, background linear 0.1s;
-	-webkit-transition: width ease-in-out 0.28s, background linear 0.1s;
-	-o-transition: width ease-in-out 0.28s, background linear 0.1s;
-	transition: width ease-in-out 0.28s, background linear 0.1s;
-	*/
-	/*
-	-ms-transform: translate(0px, 0);
-	-moz-transform: translate(0px, 0);
-	-webkit-transform: translate3d(0px, 0, 0);
-	transform: translate(0px, 0);
-	*/
-	
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -58,52 +41,24 @@ nav span {
 }
 .content {
 	display: block;
-	/*
-	-ms-transform: translate(150px, 0);
-	-moz-transform: translate(150px, 0);
-	-webkit-transform: translate3d(150px, 0, 0);
 	transform: translate(150px, 0);
-	*/
-	transform: translate(150px, 0);
-	
-	/*
-	-ms-transition: -ms-transform 0.28s ease-in-out;
-	-moz-transition: -moz-transform 0.28s ease-in-out;
-	-webkit-transition: -webkit-transform 0.28s ease-in-out;
-	transition: transform 0.28s ease-in-out;
-	*/
 	transition: transform 0.28s ease-in-out;
 }
 
 .nav-collapsed .content {
-	/*
-	-ms-transform: translate(0px, 0);
-	-moz-transform: translate(0px, 0);
-	-webkit-transform: translate3d(0px, 0, 0);
-	transform: translate(0px, 0);
-	*/
 	transform: translate3d(0px, 0, 0);
 }
-/*
-.nav-collapsed .side-nav {
-	width: 50px;
-}
-*/
+
 .nav-collapsed .nav-logo {
 	width: 50px;
 }
-/*
-.side-nav ul {
-	width: 200px;
-}
-*/
+
 .side-nav li a {
 	padding-left: 11px;
 }
 
 .side-nav li a:hover {
 	color: #FF8300;
-	/*background: #333;*/
 }
 
 .icon {
@@ -118,14 +73,11 @@ nav span {
 	color: #FF8300;
 }
 
-
-
 .nav-logo {
 	font-family:"Rock Salt";
 	font-weight: bold;
 	line-height: 2.8125rem;
 	padding: 22px 0px;
-	/*display: inline-block;*/
 	width: 200px;
 	text-align: center;
 	display:inline-block;
@@ -136,12 +88,6 @@ nav span {
 	cursor: default;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	/*
-	-moz-transition: width ease-in-out 0.28s, background linear 0.1s;
-	-webkit-transition: width ease-in-out 0.28s, background linear 0.1s;
-	-o-transition: width ease-in-out 0.28s, background linear 0.1s;
-	transition: width ease-in-out 0.28s, background linear 0.1s;
-	*/
 	transition: width ease-in-out 0.28s;
 }
 
@@ -151,12 +97,6 @@ nav span {
 
 .logo-text {
 	opacity: 0;
-	/*
-	-moz-transition: opacity 0.28s ease-in-out 0.1s;
-	-webkit-transition: opacity 0.28s ease-in-out 0.1s;
-	-o-transition: opacity 0.28s ease-in-out 0.1s;
-	transition: opacity 0.28s ease-in-out 0.1s;
-	*/
 	transition: opacity 0.28s ease-in-out;
 }
 
