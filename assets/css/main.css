@@ -232,7 +232,7 @@ background: #333333;
   margin-right: 0px;
 }
 
-article {
+article, .blog-page {
 	background-color: white;
 	padding: 1px 15px;
 	margin-top: 10px;
